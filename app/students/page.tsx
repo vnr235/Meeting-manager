@@ -54,9 +54,13 @@ export default function StudentPage() {
       const data = await res.json()
       if (data.success) {
         setMessage(`Meeting Booked! Join using this link: ${data.meetLink}`)
+
+        // ✅ Remove the booked slot from the UI
+        setSlots(prevSlots => prevSlots.filter(s => s._id !== slot._id))
+
         // Clear selection
         setBookingInfo(prev => ({ ...prev, selected: null }))
-      } else {
+      }else {
         setMessage("Failed to book meeting: " + (data.error || "Unknown error"))
       }
     } catch (e) {

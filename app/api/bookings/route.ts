@@ -79,5 +79,12 @@ export async function POST(req: Request) {
     createdAt: new Date(),
   })
 
+  await db.collection("available").deleteOne({
+    email: teacherEmail,
+    date,
+    startTime,
+    endTime,
+  })
+
   return NextResponse.json({ success: true, meetLink })
 }
