@@ -1,36 +1,107 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📅 Meeting Scheduler Web App
 
-## Getting Started
+A full-stack web application for scheduling online meetings between teachers and students with automatic **Google Meet** integration and **email notifications**.
 
-First, run the development server:
+## ✨ Features
 
+- ✅ Teachers can define their availability (date, time, subject)
+- ✅ Students can view available slots and book meetings
+- ✅ Automatic **Google Calendar** event creation with Google Meet link
+- ✅ Email notifications sent to both teacher and student
+- ✅ Booking details stored in **MongoDB**
+
+---
+
+## 🚀 Setup Instructions
+
+### 1️⃣ Clone the Repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/your-username/meeting-scheduler.git
+cd meeting-scheduler
+```
+### 2️⃣ Install Dependencies
+```
+bash
+Copy
+Edit
+npm install
+```
+### 3️⃣ Environment Variables
+```
+Create a .env.local file in the root directory with the following:
+
+GOOGLE_CLIENT_SECRET= YOUR CLIENT SECRET
+
+GOOGLE_CLIENT_ID= YOUR CLIENT ID
+
+GOOGLE_CALENDAR_ID= primary
+
+GOOGLE_REFRESH_TOKEN=YOUR TOKEN
+
+MONGODB_URI= YOUR ATLAS URL
+
+MONGODB_NAME= YOUR MONGODB NAME
+ 
+EMAIL_USER= YOUR MAIL
+
+EMAIL_PASS= YOUR MAIL APP PASSWORD
+
+Create a project on Google Cloud Console
+
+Enable Google Calendar API
+
+Create a Service Account with Calendar access
+
+Share your calendar with the GOOGLE_CLIENT_EMAIL service account email
+
+Get your GOOGLE_PROJECT_NUMBER from Google Cloud project settings
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 4️⃣ Start the Development Server
+```
+bash
+Copy
+Edit
+npm run dev
+App runs on: http://localhost:3000
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 📌 Features Implemented
+```
+Feature	Status
+Teacher availability management	✅ Done
+Student booking UI	✅ Done
+Google Meet link generation	✅ Done
+Emails to teacher & student	✅ Done
+Booking data saved in MongoDB	✅ Done
+````
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### ⚠️ Known Issues / Limitations
+```
+❗ No Authentication — anyone with the URL can book
 
-## Learn More
+❗ No Double Booking Prevention — multiple students can book the same slot
 
-To learn more about Next.js, take a look at the following resources:
+❗ Basic UI — styling is functional but minimal
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+❗ Time Format — ensure times are provided in 24-hour format (HH:mm)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+❗ No Cancel/Update Functionality — once booked, slots cannot be changed
+````
+### 🛠️ Planned Features
+```
+Authentication (Google Sign-In or password-based)
 
-## Deploy on Vercel
+Conflict detection to prevent overlapping bookings
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Slot cancellation & rescheduling
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Improved responsive UI & UX
+
+Admin dashboard for managing bookings
+
+Email reminders for upcoming meetings
+````
+### 📧 Contact
+For questions or contributions, contact:
+vnr235@gmail.com
