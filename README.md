@@ -1,3 +1,4 @@
+
 # 📅 Meeting Scheduler Web App
 
 A full-stack web application for scheduling online meetings between teachers and students with automatic **Google Meet** integration and **email notifications**.
