@@ -1,8 +1,17 @@
 import { google } from "googleapis";
 
+interface CreateEventData {
+  summary: string;
+  description: string;
+  startTime: string;  // ISO 8601 format string
+  endTime: string;    // ISO 8601 format string
+  attendees: Array<{ email: string }>;
+}
+
+
 const calendar = google.calendar("v3");
 
-export async function createGoogleMeetEvent(data: any) {
+export async function createGoogleMeetEvent(data: CreateEventData) {
   const auth = new google.auth.OAuth2(
     process.env.GOOGLE_CLIENT_ID!,
     process.env.GOOGLE_CLIENT_SECRET!,
@@ -39,8 +48,11 @@ export async function createGoogleMeetEvent(data: any) {
       },
     });
     return event.data;
-  } catch (error: any) {
-    console.error("Google API Error:", JSON.stringify(error.response?.data, null, 2));
+  } catch (error) {
+    if(error instanceof Error) {
+      console.log("Google API Error: ", error.message)
+    }else{
+    console.error("Unknown error:", JSON.stringify(error));}
     throw error;
   }
 }

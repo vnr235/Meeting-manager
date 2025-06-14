@@ -1,9 +1,20 @@
 "use client"
 import { useEffect, useState } from "react"
 
+interface Slot {
+  _id: string
+  name: string
+  email: string
+  subject: string
+  date: string
+  startTime: string
+  endTime: string
+}
+
+
 export default function StudentPage() {
-  const [slots, setSlots] = useState([])
-  const [bookingInfo, setBookingInfo] = useState({ name: "", email: "", selected: null })
+  const [slots, setSlots] = useState<Slot[]>([])
+  const [bookingInfo, setBookingInfo] = useState<{ name: string; email: string; selected: string | null }>({ name: "", email: "", selected: null })
   const [message, setMessage] = useState("")
   const [isLoading, setIsLoading] = useState(true)
 
@@ -17,7 +28,7 @@ export default function StudentPage() {
       .catch(() => setIsLoading(false))
   }, [])
 
-  const handleBook = async (slot: any) => {
+  const handleBook = async (slot: Slot) => {
     if (!bookingInfo.name || !bookingInfo.email) {
       alert("Please enter your name and email first")
       return
@@ -48,8 +59,9 @@ export default function StudentPage() {
       } else {
         setMessage("Failed to book meeting: " + (data.error || "Unknown error"))
       }
-    } catch (error) {
+    } catch (e) {
       setMessage("Network error. Please try again.")
+      console.log(e)
     } finally {
       setIsLoading(false)
     }
@@ -103,7 +115,7 @@ export default function StudentPage() {
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-              {slots.map((slot: any) => (
+              {slots.map((slot) => (
                 <div 
                   key={slot._id} 
                   className={`bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg border-l-4 ${bookingInfo.selected === slot._id ? 'border-indigo-600' : 'border-gray-200'}`}

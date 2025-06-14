@@ -59,7 +59,7 @@ export default function Home() {
                       transform hover:-translate-y-1 flex items-center justify-center gap-2"
           >
             <ChalkboardTeacherIcon className="h-5 w-5" />
-            <span>I'm an Educator</span>
+            <span>I&#39;m an Educator</span>
           </a>
           
           <a 
@@ -69,7 +69,7 @@ export default function Home() {
                       transform hover:-translate-y-1 flex items-center justify-center gap-2"
           >
             <AcademicCapIcon className="h-5 w-5" />
-            <span>I'm a Student</span>
+            <span>I&#39;m a Student</span>
           </a>
         </div>
         

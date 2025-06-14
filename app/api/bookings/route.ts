@@ -9,7 +9,6 @@ export async function POST(req: Request) {
   const start = new Date(`${date}T${startTime}:00+05:30`).toISOString()
   const end = new Date(`${date}T${endTime}:00+05:30`).toISOString()
   if(new Date(start) >= new Date(end)){
-    console.log("❗ Invalid time range - start >= end", { start, end });
     return NextResponse.json({ success: false, error: "start time must be before end time"}, { status: 400 })
   }
   
@@ -32,10 +31,13 @@ export async function POST(req: Request) {
     ],
   })
 
+
   //Safely extract the Meet Link
-  const meetLink =
-    event?.conferenceData?.entryPoints?.find((e: any) => e.entryPointType === "video")?.uri ||
-    "https://meet.google.com"
+  const meetLink = event?.conferenceData?.entryPoints
+  ?.find((e): e is { entryPointType: string; uri: string } => 
+    e.entryPointType === "video" && typeof e.uri === "string"
+  )
+  ?.uri || "https://meet.google.com"
 
   // Email to teacher
   await sendEmail({

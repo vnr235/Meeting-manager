@@ -37,6 +37,7 @@ export default function TeacherPage() {
       }
     } catch (error) {
       setMessage("Network error. Please try again.")
+      console.log(error)
     } finally {
       setIsSubmitting(false)
     }
@@ -47,7 +48,7 @@ export default function TeacherPage() {
       <div className="max-w-md mx-auto">
         <div className="text-center mb-10">
           <h1 className="text-3xl font-bold text-indigo-900 mb-2">Set Your Availability</h1>
-          <p className="text-gray-600">Share when you're available for tutoring sessions</p>
+          <p className="text-gray-600">Share when you&#39;re available for tutoring sessions</p>
         </div>
         
         <div className="bg-white w-100 rounded-2xl shadow-xl p-6 md:p-8 transition-all duration-300 hover:shadow-2xl">
