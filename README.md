@@ -21,9 +21,6 @@ cd meeting-scheduler
 ```
 ### 2️⃣ Install Dependencies
 ```
-bash
-Copy
-Edit
 npm install
 ```
 ### 3️⃣ Environment Variables
